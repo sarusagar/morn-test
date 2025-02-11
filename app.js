@@ -2,6 +2,7 @@ require('dotenv').config()
 const express =require("express")
 const connetToDatabase = require("./database")
 const app = express()
+app.use(express.json())
 
 connetToDatabase()
 app.get("/",(req,res)=>{
@@ -13,6 +14,12 @@ app.get("/first",(req,res)=>{
     res.json("this is my secondary.")
 })
 
+app.post("/blog",(req,res)=>{
+    console.log(req.body)
+    res.status(200).json({
+        message:" Blog API hit successfully."
+    })
+})
 
 
 
